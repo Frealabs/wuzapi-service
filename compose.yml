@@ -1,0 +1,25 @@
+services:
+  wuzapi-service:
+    build:
+      context: .
+    environment:
+      - WUZAPI_ADMIN_TOKEN=${WUZAPI_ADMIN_TOKEN}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - TZ=${TZ}
+      - WEBHOOK_FORMAT=${WEBHOOK_FORMAT}
+      - SESSION_DEVICE_NAME=${SESSION_DEVICE_NAME}
+
+      # RabbitMQ configuration Optional
+      - RABBITMQ_URL=${RABBITMQ_URL}
+      - RABBITMQ_QUEUE=${RABBITMQ_QUEUE:-whatsapp_events}
+    networks:
+      - frealabs_shared_net
+    restart: on-failure
+
+networks:
+  frealabs_shared_net:
+    external: true
