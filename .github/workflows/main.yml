@@ -24,8 +24,8 @@ jobs:
           script: |
             set -e #Exit immediately if a command fails
             cd "${{ secrets.DIRECTORY }}"
-            git checkout main
-            git pull origin main
+            git checkout production
+            git pull origin production
             docker compose up -d --build
 
       - name: Success Notification
