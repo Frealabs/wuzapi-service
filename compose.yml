@@ -1,5 +1,6 @@
 services:
   wuzapi-service:
+    container_name: wuzapi-service
     build:
       context: .
     environment:
